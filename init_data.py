@@ -5,7 +5,7 @@ import datetime
 subject = db_session.query(Subject).first()
 
 if subject is None:
-	titles = ['Физика', 'Информатика', 'Алгебра', 'Английский язык', 'Русский язык', 'Физ-ра', 'Геометрия', 'Химия']
+	titles = ['Физика', 'Информатика', 'Алгебра', 'Английский язык', 'Русский язык', 'Физ-ра', 'Геометрия', 'Химия', 'Немецкий язык', 'История', 'Обществознание', 'География', 'Литература', 'Биология']
 	for title in titles:
 		db_session.add(Subject(title=title))
 	db_session.commit()
@@ -31,7 +31,11 @@ if lesson is None:
 	lesson6 = Lesson(title='Шестой урок', time=datetime.time(13, 30), day_of_week='вторник', sub_id=1, cl_id=4)
 	lesson7 = Lesson(title='Первый урок', time=datetime.time(8, 30), day_of_week='Понедельник', sub_id=7, cl_id=3)
 	lesson8 = Lesson(title='Третий урок', time=datetime.time(10, 30), day_of_week='Четверг', sub_id=6, cl_id=2)
-	db_session.add_all([lesson3, lesson2, lesson1, lesson4, lesson5, lesson6, lesson7, lesson8])
+	lesson9 = Lesson(title='Второй урок', time=datetime.time(9, 30), day_of_week='Понедельник', sub_id=10, cl_id=2)
+	lesson10 = Lesson(title='Седьмой урок', time=datetime.time(14, 30), day_of_week='Среда', sub_id=11, cl_id=4)
+	lesson11 = Lesson(title='Шестой урок', time=datetime.time(13, 30), day_of_week='Пятница', sub_id=1, cl_id=3)
+	lesson12 = Lesson(title='Четвёртый урок', time=datetime.time(11, 30), day_of_week='Вторник', sub_id=8, cl_id=1)
+	db_session.add_all([lesson3, lesson2, lesson1, lesson4, lesson5, lesson6, lesson7, lesson8, lesson9, lesson10, lesson11, lesson12])
 	db_session.commit()
 
 
