@@ -1,6 +1,6 @@
-from models import Subject, Lesson, Class
+from models import Subject, Lesson, Class, User
 from db import db_session
-import datetime
+import datetime, getpass
 
 subject = db_session.query(Subject).first()
 
@@ -37,6 +37,18 @@ if lesson is None:
 	lesson12 = Lesson(title='Четвёртый урок', time=datetime.time(11, 30), day_of_week='Вторник', sub_id=8, cl_id=1)
 	db_session.add_all([lesson3, lesson2, lesson1, lesson4, lesson5, lesson6, lesson7, lesson8, lesson9, lesson10, lesson11, lesson12])
 	db_session.commit()
+
+
+super_user_name = input("Введите имя пользователя\n")
+super_user_pass = getpass.getpass("Введите пароль\n")
+super_user_repeat_pass = getpass.getpass("Повторите пароль\n")
+if super_user_pass == super_user_repeat_pass:
+    Super_user = User(username=super_user_name, password=super_user_pass)
+    db_session.add(Super_user)
+    db_session.commit()
+else:
+    print("Пароли не совпадают!")
+
 
 
 

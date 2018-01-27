@@ -1,2 +1,4 @@
 python-telegram-bot==9.0.0
 SQLAlchemy==1.1.15
+Flask-Login==0.4.1
+Flask==0.12.2
