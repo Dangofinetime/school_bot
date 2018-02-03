@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Название</th>
+      <th scope="col">Время</th>
+      <th scope="col">День недели</th>
+      <th scope="col">Урок</th>
+      <th scope="col">Класс</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for lesson in lessons %}
+    <tr>
+      <td>{{ lesson.title }}</td>
+      <td>{{ lesson.time }}</td>
+      <td>{{ lesson.day_of_week }}</td>
+      <td>{{ lesson.subject.title }}</td>
+      <td>{{ lesson.class.title }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

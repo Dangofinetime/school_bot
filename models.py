@@ -3,6 +3,7 @@ from sqlalchemy.orm import scoped_session, sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 from db import db_session, engine
 from datetime import datetime
+from sqlalchemy.orm import relationship
 
 
 Base = declarative_base()
@@ -12,6 +13,8 @@ class Subject(Base):
     __tablename__ = 'subjects'
     id = Column(Integer, primary_key=True)
     title = Column(String(50))
+
+    lesson = relationship("Lesson", backref="subject")
 
 
 class Lesson(Base):
@@ -28,6 +31,8 @@ class Class(Base):
     __tablename__ = 'classes'
     id = Column(Integer, primary_key=True)
     title = Column(String(50))
+
+    lesson = relationship("Lesson", backref="class")
 
 
 class User(Base):
@@ -52,7 +57,7 @@ class User(Base):
         return False
  
     def get_id(self):
-        return unicode(self.id)
+        return str(self.id)
  
     def __repr__(self):
         return '<User %r>' % (self.username)
